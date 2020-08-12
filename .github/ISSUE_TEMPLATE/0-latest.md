@@ -1,8 +1,8 @@
 ---
-name: 示例博客
+name: 最新测试版本
 about: 自助添加示例博客
 title: https://
-labels: latest,active
+labels: 'latest'
 assignees: ''
 
 ---
@@ -10,5 +10,5 @@ assignees: ''
 name:
 avatar:
 tags: [标签1, 标签2]
-desc: 描述
+desc:
 ```
