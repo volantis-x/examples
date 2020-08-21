@@ -7,8 +7,7 @@ assignees: ''
 
 ---
 ```yaml
-name:
-avatar:
-tags: [标签1, 标签2]
-desc:
+title:
+screenshot:
+description:
 ```
