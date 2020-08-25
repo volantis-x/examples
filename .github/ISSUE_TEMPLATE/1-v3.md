@@ -8,6 +8,7 @@ assignees: ''
 ---
 ```yaml
 title:
+avatar:
 screenshot:
 description:
 ```
