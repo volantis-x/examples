@@ -19,10 +19,10 @@ group: 版本：^5.0
 
 
 #### 可选项 ####
-# 网站描述
-description:
 # 作者头像链接
 avatar:
+# 网站描述
+description:
 # 关键词，多个关键词用英文逗号和一个空格隔开，如 keywords: A, B
 keywords:
 ```
