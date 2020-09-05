@@ -2,13 +2,27 @@
 name: 最新测试版本
 about: 自助添加示例博客
 title: https://
-labels: 'latest'
+labels: ''
 assignees: ''
 
 ---
 ```yaml
+#### 必填项 ####
+# 网站标题
 title:
-avatar:
+# 网站截图
 screenshot:
+# 网站链接
+url:
+# 网站使用的主题版本，如 group: 版本：^5.0
+group: 版本：^5.0
+
+
+#### 可选项 ####
+# 网站描述
 description:
+# 作者头像链接
+avatar:
+# 关键词，多个关键词用英文逗号和一个空格隔开，如 keywords: A, B
+keywords:
 ```
