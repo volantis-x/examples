@@ -5,6 +5,6 @@ request:
 
 # 要抓取的 issues 配置
 issues:
-  repo: xaoxuu/issues-api
+  repo: volantis-x/examples
   state: open
-  label: active
+  label: example
