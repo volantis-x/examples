@@ -10,10 +10,9 @@ assignees: ''
 ```json
 {
     "title": "",
-    "url": "",
+    "url": "https://",
     "avatar": "",
     "screenshot": "",
-    "description": "",
-    "version": ""
+    "description": ""
 }
 ```
