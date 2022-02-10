@@ -127,7 +127,7 @@ def Create_an_issue_comment_invalid(issue_number):
   try:
     config = load_config()
     url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number+'/comments'
-    data={"body":'''**⚠️ 抱歉，经过 Github Actiond 检测，您的网站存在违规信息，现已下架。**\r\n\r\n如果您确认已经处理了违规信息，请重新提交issues.'''}
+    data={"body":'''**⚠️ 抱歉，经过 Github Actions 检测，您的网站存在违规信息，现已下架。**\r\n\r\n如果您确认已经处理了违规信息，请重新提交issues.'''}
     data=json.dumps(data)
     handlers={
       "Authorization": "token "+sys.argv[1],
