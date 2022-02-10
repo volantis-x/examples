@@ -156,7 +156,7 @@ def Close_an_issue(issue_number):
 print('------- error data start ----------')
 for item in error_pool:
     print(item)
-    if iten['error'] ＝＝ "NOT Volantis OR Stellar":
+    if item['error'] ＝＝ "NOT Volantis OR Stellar":
         add_labels_invalid(item['id'])
         Create_an_issue_comment_invalid(item['id'])
         Close_an_issue(item['id'])
