@@ -1,7 +1,12 @@
 [
     {
         "id": "81",
-        "url": "http://example.com/",
-        "error": "NOT Volantis OR Stellar"
+        "url": "http://",
+        "error": "NETWORK ERROR"
+    },
+    {
+        "id": "2",
+        "url": "https://hasaik.com",
+        "error": "NETWORK ERROR"
     }
 ]
