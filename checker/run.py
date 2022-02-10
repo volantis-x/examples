@@ -127,7 +127,7 @@ def Create_an_issue_comment_invalid(issue_number):
   try:
     config = load_config()
     url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number+'/comments'
-    data={"body":'''**⚠️ 抱歉，您的网站打不开，或者存在违规信息，现已下架。**\r\n\r\n如果您确认可以打开或者已经处理了违规信息，请重新提交issues.'''}
+    data={"body":'''**⚠️ 抱歉，经过 Github Actiond 检测，您的网站存在违规信息，现已下架。**\r\n\r\n如果您确认已经处理了违规信息，请重新提交issues.'''}
     data=json.dumps(data)
     handlers={
       "Authorization": "token "+sys.argv[1],
@@ -156,9 +156,10 @@ def Close_an_issue(issue_number):
 print('------- error data start ----------')
 for item in error_pool:
     print(item)
-    add_labels_invalid(item['id'])
-    Create_an_issue_comment_invalid(item['id'])
-    Close_an_issue(item['id'])
+    if iten['error'] ＝＝ "NOT Volantis OR Stellar":
+        add_labels_invalid(item['id'])
+        Create_an_issue_comment_invalid(item['id'])
+        Close_an_issue(item['id'])
 print('------- error data end ----------')
 print('\n')
 
