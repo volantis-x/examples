@@ -102,4 +102,4 @@ print('\n')
 
 filename='checker/output/v1/error.json'
 with open(filename,'w',encoding='utf-8') as file_obj:
-   json.dump(error_pool,file_obj,ensure_ascii=False)
+   json.dump(error_pool,file_obj,ensure_ascii=False,indent=4)
