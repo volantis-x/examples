@@ -61,7 +61,9 @@ def github_issuse(data_pool):
 
 github_issuse(data_pool)
 
-pattern = re.compile(r'volantis|Volantis|stellar|Stellar')
+pattern1 = re.compile(r'volantis|Volantis')
+pattern2 = re.compile(r'stellar|Stellar')
+pattern3 = re.compile(r'l_header')
 
 def checker_url(item):
     res={}
@@ -73,8 +75,10 @@ def checker_url(item):
         res['r'] = False
         res['e'] = "NETWORK ERROR"
         return res
-      result = pattern.findall(data)
-      if len(result) > 0:
+      result1 = pattern1.findall(data)
+      result2 = pattern2.findall(data)
+      result3 = pattern3.findall(data)
+      if len(result1) > 0 and len(result3) > 0 or len(result2) > 0:
           res['r'] = True
       else:
           res['r'] = False
@@ -171,10 +175,10 @@ def Close_an_issue(issue_number):
 print('------- error data start ----------')
 for item in error_pool:
     print(item)
-    if item['error'] == "NOT Volantis OR Stellar":
-        add_labels_invalid(item['id'])
-        Create_an_issue_comment_invalid(item['id'])
-        Close_an_issue(item['id'])
+    #if item['error'] == "NOT Volantis OR Stellar":
+        #add_labels_invalid(item['id'])
+        #Create_an_issue_comment_invalid(item['id'])
+        #Close_an_issue(item['id'])
     if item['error'] == "NETWORK ERROR":
         add_labels_network_warning(item['id'])
 print('------- error data end ----------')
