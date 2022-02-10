@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import random
+import time
 import requests
 import yaml
 requests.packages.urllib3.disable_warnings()
@@ -29,12 +30,17 @@ def getRandUa():
 def get_data(link):
     config = load_config()
     result = ''
-    header = {'User-Agent': getRandUa()}
+    header = {
+      'User-Agent': getRandUa(),
+      "Connection": "close",
+      }
     try:
-        requests.adapters.DEFAULT_RETRIES = 5
+        time.sleep(3)
+        requests.adapters.DEFAULT_RETRIES = 55
         s = requests.session()
         s.keep_alive = False # 关闭多余连接
         r = s.get(link, headers=header, timeout=config['request']['timeout'],verify=False)
+        s.close()
         r.encoding = 'utf-8'
         result = r.text.encode("gbk", 'ignore').decode('gbk', 'ignore')
         if str(r) == '<Response [404]>':
