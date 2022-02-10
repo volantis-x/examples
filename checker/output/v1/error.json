@@ -1,12 +1,7 @@
 [
     {
         "id": "81",
-        "url": "http://",
-        "error": "NETWORK ERROR"
-    },
-    {
-        "id": "18",
-        "url": "https://alanwang.site/",
-        "error": "NETWORK ERROR"
+        "url": "http://example.com/",
+        "error": "NOT Volantis OR Stellar"
     }
 ]
