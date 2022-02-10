@@ -61,7 +61,7 @@ def github_issuse(data_pool):
 
 github_issuse(data_pool)
 
-pattern = re.compile(r'https://github.com/volantis-x/hexo-theme-volantis/tree|stellar|Stellar')
+pattern = re.compile(r'hexo-theme-volantis/tree|stellar|Stellar')
 
 def checker_url(item):
     res={}
