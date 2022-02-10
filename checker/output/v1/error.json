@@ -2,11 +2,6 @@
     {
         "id": "81",
         "url": "http://example.com/",
-        "error": "NETWORK ERROR"
-    },
-    {
-        "id": "4",
-        "url": "https://7bxing.com",
-        "error": "NETWORK ERROR"
+        "error": "NOT Volantis OR Stellar"
     }
 ]
