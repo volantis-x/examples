@@ -127,7 +127,7 @@ def Create_an_issue_comment_invalid(issue_number):
   try:
     config = load_config()
     url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number+'/comments'
-    data='''{"body":"**⚠️ 抱歉，您的网站打不开，或者存在违规信息，现已下架。**\r\n\r\n如果您确认可以打开或者已经处理了违规信息，请重新提交issues."}'''
+    data='''**⚠️ 抱歉，您的网站打不开，或者存在违规信息，现已下架。**\r\n\r\n如果您确认可以打开或者已经处理了违规信息，请重新提交issues.'''
     handlers={
       "Authorization": "token "+sys.argv[1],
       "Accept": "application/vnd.github.v3+json"
@@ -137,8 +137,20 @@ def Create_an_issue_comment_invalid(issue_number):
   except Exception as e:
     print(e)
 
+# https://docs.github.com/en/rest/reference/issues#update-an-issue
 def Close_an_issue(issue_number):
-  print()
+  try:
+    config = load_config()
+    url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number
+    data='''{"state":"closed"}'''
+    handlers={
+      "Authorization": "token "+sys.argv[1],
+      "Accept": "application/vnd.github.v3+json"
+    }
+    r=requests.patch(url=url,data=data.encode(),headers=handlers)
+    print(r.text.encode("gbk", 'ignore').decode('gbk', 'ignore'))
+  except Exception as e:
+    print(e)
 
 print('------- error data start ----------')
 for item in error_pool:
