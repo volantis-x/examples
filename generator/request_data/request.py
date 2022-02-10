@@ -16,7 +16,7 @@ def get_data(link):
     user_agent = 'Mozilla/5.0 (Macintosh;Intel Mac OS X 10_12_6) ' \
                  'AppleWebKit/537.36(KHTML, like Gecko) ' \
                  'Chrome/67.0.3396.99Safari/537.36'
-    header = {'User_Agent': user_agent}
+    header = {'User-Agent': user_agent}
     try:
         r = requests.get(link, headers=header, timeout=config['request']['timeout'],verify=config['request']['ssl'])
         r.encoding = 'utf-8'
