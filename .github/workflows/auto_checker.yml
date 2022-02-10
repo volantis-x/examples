@@ -23,10 +23,8 @@ jobs:
         pip install requests[security]
     - name: Update links #更新
       run: |
-        python checker/run.py
+        python checker/run.py GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
         echo `date +"%Y-%m-%d %H:%M:%S"` begin > checker/time.log
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Commit #更新日志到GitHub仓库
       run: |
