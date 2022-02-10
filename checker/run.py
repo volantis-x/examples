@@ -108,12 +108,12 @@ def add_labels_invalid(issue_number):
     # print(r.text.encode("gbk", 'ignore').decode('gbk', 'ignore'))
   except Exception as e:
     print(e)
-
+# 内容违规 标签
 def add_labels_invalid(issue_number):
   try:
     config = load_config()
     url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number+'/labels'
-    data='["invalid"]'
+    data='["invalid","NOT Volantis OR Stellar"]'
     handlers={
       "Authorization": "token "+sys.argv[1],
       "Accept": "application/vnd.github.v3+json"
@@ -122,7 +122,7 @@ def add_labels_invalid(issue_number):
     # print(r.text.encode("gbk", 'ignore').decode('gbk', 'ignore'))
   except Exception as e:
     print(e)
-
+# 网络警告 标签
 def add_labels_network_warning(issue_number):
   try:
     config = load_config()
