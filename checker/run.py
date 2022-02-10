@@ -59,51 +59,41 @@ def github_issuse(data_pool):
 
 
 
-# github_issuse(data_pool)
+github_issuse(data_pool)
 
-# pattern = re.compile(r'volantis|Volantis|stellar|Stellar')
-# def checker_url(item):
-#     res={}
-#     try:
-#       print(item['id'])
-#       print(item['url'])
-#       data = request.get_data(item['url'])
-#       if data == 'error':
-#         res['r'] = False
-#         res['e'] = "NETWORK ERROR"
-#         return res
-#       result = pattern.findall(data)
-#       if len(result) > 0:
-#           res['r'] = True
-#       else:
-#           res['r'] = False
-#           res['e'] = "NOT Volantis OR Stellar"
-#     except Exception as e:
-#         res['r'] = False
-#         res['e'] = "NETWORK ERROR"
-#     return res
+pattern = re.compile(r'volantis|Volantis|stellar|Stellar')
+def checker_url(item):
+    res={}
+    try:
+      print(item['id'])
+      print(item['url'])
+      data = request.get_data(item['url'])
+      if data == 'error':
+        res['r'] = False
+        res['e'] = "NETWORK ERROR"
+        return res
+      result = pattern.findall(data)
+      if len(result) > 0:
+          res['r'] = True
+      else:
+          res['r'] = False
+          res['e'] = "NOT Volantis OR Stellar"
+    except Exception as e:
+        res['r'] = False
+        res['e'] = "NETWORK ERROR"
+    return res
 
 
-# print('------- checker start ----------')
-# error_pool=[]
-# for item in data_pool:
-#     result = checker_url(item)
-#     if not result['r']:
-#         item['error'] = result['e']
-#         error_pool.append(item)
+print('------- checker start ----------')
+error_pool=[]
+for item in data_pool:
+    result = checker_url(item)
+    if not result['r']:
+        item['error'] = result['e']
+        error_pool.append(item)
 
-# print('------- checker end ----------')
-# print('\n')
-
-# print('------- error data start ----------')
-# for item in error_pool:
-#     print(item)
-# print('------- error data end ----------')
-# print('\n')
-
-# filename='checker/output/v1/error.json'
-# with open(filename,'w',encoding='utf-8') as file_obj:
-#    json.dump(error_pool,file_obj,ensure_ascii=False,indent=4)
+print('------- checker end ----------')
+print('\n')
 
 def add_labels_invalid(issue_number):
   try:
@@ -111,7 +101,7 @@ def add_labels_invalid(issue_number):
     url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number+'/labels'
     data='["invalid"]'
     handlers={
-      "Authorization": "token GITHUB_TOKEN",
+      "Authorization": "token "+sys.argv[1],
       "Accept": "application/vnd.github.v3+json"
     }
     r=requests.post(url=url,data=data,headers=handlers)
@@ -119,4 +109,15 @@ def add_labels_invalid(issue_number):
   except Exception as e:
     print(e)
 
-print(sys.argv[1])
+
+print('------- error data start ----------')
+for item in error_pool:
+    print(item)
+    add_labels_invalid(item['id'])
+print('------- error data end ----------')
+print('\n')
+
+filename='checker/output/v1/error.json'
+with open(filename,'w',encoding='utf-8') as file_obj:
+   json.dump(error_pool,file_obj,ensure_ascii=False,indent=4)
+
