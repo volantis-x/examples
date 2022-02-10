@@ -61,7 +61,8 @@ def github_issuse(data_pool):
 
 github_issuse(data_pool)
 
-pattern = re.compile(r'volantis|Volantis|stellar|Stellar')
+pattern = re.compile(r'https://github.com/volantis-x/hexo-theme-volantis/tree|stellar|Stellar')
+
 def checker_url(item):
     res={}
     try:
@@ -170,10 +171,10 @@ def Close_an_issue(issue_number):
 print('------- error data start ----------')
 for item in error_pool:
     print(item)
-    if item['error'] == "NOT Volantis OR Stellar":
-        add_labels_invalid(item['id'])
-        Create_an_issue_comment_invalid(item['id'])
-        Close_an_issue(item['id'])
+    #if item['error'] == "NOT Volantis OR Stellar":
+       # add_labels_invalid(item['id'])
+       # Create_an_issue_comment_invalid(item['id'])
+        #Close_an_issue(item['id'])
     if item['error'] == "NETWORK ERROR":
         add_labels_network_warning(item['id'])
 print('------- error data end ----------')
