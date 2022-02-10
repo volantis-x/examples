@@ -132,7 +132,7 @@ def Create_an_issue_comment_invalid(issue_number):
       "Authorization": "token "+sys.argv[1],
       "Accept": "application/vnd.github.v3+json"
     }
-    r=requests.post(url=url,data=data.encode(),headers=handlers)
+    r=requests.post(url=url,data='{"body":"'+data.encode()+'"}',headers=handlers)
     print(r.text.encode("gbk", 'ignore').decode('gbk', 'ignore'))
   except Exception as e:
     print(e)
@@ -148,7 +148,7 @@ def Close_an_issue(issue_number):
       "Accept": "application/vnd.github.v3+json"
     }
     r=requests.patch(url=url,data=data.encode(),headers=handlers)
-    print(r.text.encode("gbk", 'ignore').decode('gbk', 'ignore'))
+    # print(r.text.encode("gbk", 'ignore').decode('gbk', 'ignore'))
   except Exception as e:
     print(e)
 
@@ -157,7 +157,7 @@ for item in error_pool:
     print(item)
     add_labels_invalid(item['id'])
     Create_an_issue_comment_invalid(item['id'])
-    Close_an_issue(item['id'])
+    # Close_an_issue(item['id'])
 print('------- error data end ----------')
 print('\n')
 
