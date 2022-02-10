@@ -31,9 +31,10 @@ def get_data(link):
     result = ''
     header = {'User-Agent': getRandUa()}
     try:
+        requests.adapters.DEFAULT_RETRIES = 5
         s = requests.session()
         s.keep_alive = False # 关闭多余连接
-        r = s.get(link, headers=header, timeout=config['request']['timeout'],verify=config['request']['ssl'])
+        r = s.get(link, headers=header, timeout=config['request']['timeout'],verify=False)
         r.encoding = 'utf-8'
         result = r.text.encode("gbk", 'ignore').decode('gbk', 'ignore')
         if str(r) == '<Response [404]>':
