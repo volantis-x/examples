@@ -3,10 +3,5 @@
         "id": "81",
         "url": "http://",
         "error": "NETWORK ERROR"
-    },
-    {
-        "id": "2",
-        "url": "https://hasaik.com",
-        "error": "NETWORK ERROR"
     }
 ]
