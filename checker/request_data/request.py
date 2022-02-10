@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import random
 import requests
 import yaml
 requests.packages.urllib3.disable_warnings()
@@ -9,11 +10,26 @@ def load_config():
     ymllist = yaml.load(ystr, Loader=yaml.FullLoader)
     return ymllist
 
+# 反反爬虫
+def getRandUa():
+  first_num = random.randint(55, 62)
+  third_num = random.randint(0, 3200)
+  fourth_num = random.randint(0, 140)
+  os_type = [
+      '(Windows NT 6.1; WOW64)', '(Windows NT 10.0; WOW64)', '(X11; Linux x86_64)',
+      '(Macintosh; Intel Mac OS X 10_12_6)'
+  ]
+  chrome_version = 'Chrome/{}.0.{}.{}'.format(first_num, third_num, fourth_num)
+
+  ua = ' '.join(['Mozilla/5.0', random.choice(os_type), 'AppleWebKit/537.36',
+                  '(KHTML, like Gecko)', chrome_version, 'Safari/537.36']
+                )
+  return ua
+
 def get_data(link):
     config = load_config()
     result = ''
-    user_agent = 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
-    header = {'User_Agent': user_agent}
+    header = {'User-Agent': getRandUa()}
     try:
         r = requests.get(link, headers=header, timeout=config['request']['timeout'],verify=config['request']['ssl'])
         r.encoding = 'utf-8'
