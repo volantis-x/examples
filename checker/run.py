@@ -127,12 +127,13 @@ def Create_an_issue_comment_invalid(issue_number):
   try:
     config = load_config()
     url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number+'/comments'
-    data='''**⚠️ 抱歉，您的网站打不开，或者存在违规信息，现已下架。**\r\n\r\n如果您确认可以打开或者已经处理了违规信息，请重新提交issues.'''
+    data={"body":'''**⚠️ 抱歉，您的网站打不开，或者存在违规信息，现已下架。**\r\n\r\n如果您确认可以打开或者已经处理了违规信息，请重新提交issues.'''}
+    data=json.dumps(data)
     handlers={
       "Authorization": "token "+sys.argv[1],
       "Accept": "application/vnd.github.v3+json"
     }
-    r=requests.post(url=url,data='{"body":"'+data.encode()+'"}',headers=handlers)
+    r=requests.post(url=url,data=data.encode(),headers=handlers)
     print(r.text.encode("gbk", 'ignore').decode('gbk', 'ignore'))
   except Exception as e:
     print(e)
@@ -164,4 +165,3 @@ print('\n')
 filename='checker/output/v1/error.json'
 with open(filename,'w',encoding='utf-8') as file_obj:
    json.dump(error_pool,file_obj,ensure_ascii=False,indent=4)
-
