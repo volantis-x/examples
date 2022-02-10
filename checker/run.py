@@ -105,15 +105,43 @@ def add_labels_invalid(issue_number):
       "Accept": "application/vnd.github.v3+json"
     }
     r=requests.post(url=url,data=data,headers=handlers)
-    print(r.text.encode("gbk", 'ignore').decode('gbk', 'ignore'))
+    # print(r.text.encode("gbk", 'ignore').decode('gbk', 'ignore'))
   except Exception as e:
     print(e)
 
+def add_labels_invalid(issue_number):
+  try:
+    config = load_config()
+    url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number+'/labels'
+    data='["invalid"]'
+    handlers={
+      "Authorization": "token "+sys.argv[1],
+      "Accept": "application/vnd.github.v3+json"
+    }
+    r=requests.post(url=url,data=data,headers=handlers)
+    # print(r.text.encode("gbk", 'ignore').decode('gbk', 'ignore'))
+  except Exception as e:
+    print(e)
+
+def Create_an_issue_comment_invalid(issue_number):
+  try:
+    config = load_config()
+    url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number+'/comments'
+    data='''{"body":"**⚠️ 抱歉，您的网站打不开，或者存在违规信息，现已下架。**\r\n\r\n如果您确认可以打开或者已经处理了违规信息，请重新提交issues."}'''
+    handlers={
+      "Authorization": "token "+sys.argv[1],
+      "Accept": "application/vnd.github.v3+json"
+    }
+    r=requests.post(url=url,data=data,headers=handlers)
+    # print(r.text.encode("gbk", 'ignore').decode('gbk', 'ignore'))
+  except Exception as e:
+    print(e)
 
 print('------- error data start ----------')
 for item in error_pool:
     print(item)
     add_labels_invalid(item['id'])
+    Create_an_issue_comment_invalid(item['id'])
 print('------- error data end ----------')
 print('\n')
 
