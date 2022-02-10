@@ -123,6 +123,20 @@ def add_labels_invalid(issue_number):
   except Exception as e:
     print(e)
 
+def add_labels_network_waring(issue_number):
+  try:
+    config = load_config()
+    url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number+'/labels'
+    data='["NETWORK WARING"]'
+    handlers={
+      "Authorization": "token "+sys.argv[1],
+      "Accept": "application/vnd.github.v3+json"
+    }
+    r=requests.post(url=url,data=data,headers=handlers)
+    # print(r.text.encode("gbk", 'ignore').decode('gbk', 'ignore'))
+  except Exception as e:
+    print(e)
+
 def Create_an_issue_comment_invalid(issue_number):
   try:
     config = load_config()
@@ -160,6 +174,8 @@ for item in error_pool:
         add_labels_invalid(item['id'])
         Create_an_issue_comment_invalid(item['id'])
         Close_an_issue(item['id'])
+    if item['error'] == "NETWORK ERROR":
+        add_labels_network_waring(item['id'])
 print('------- error data end ----------')
 print('\n')
 
