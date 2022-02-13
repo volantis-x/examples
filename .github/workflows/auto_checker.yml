@@ -24,7 +24,7 @@ jobs:
     - name: Update links #更新
       run: |
         python checker/run.py ${{ secrets.GITHUB_TOKEN }}
-        echo `date +"%Y-%m-%d %H:%M:%S"` begin > checker/time.log
+        #echo `date +"%Y-%m-%d %H:%M:%S"` begin > checker/time.log
 
     - name: Commit #更新日志到GitHub仓库
       run: |
