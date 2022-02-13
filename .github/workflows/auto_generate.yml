@@ -26,7 +26,7 @@ jobs:
     - name: Update links #更新
       run: |
         python generator/run.py
-        #echo `date +"%Y-%m-%d %H:%M:%S"` begin > generator/time.log
+        echo `date +"%Y-%m-%d %H:%M:%S"` begin > generator/time.log
     - name: Commit #更新日志到GitHub仓库
       run: |
         git config --global user.email github-actions@noreply.github.com
