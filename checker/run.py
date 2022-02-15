@@ -102,7 +102,7 @@ def add_labels(issue_number,labels):
   try:
     config = load_config()
     url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number+'/labels'
-    data= str(labels)
+    data= labels
     handlers={
       "Authorization": "token "+sys.argv[1],
       "Accept": "application/vnd.github.v3+json"
@@ -146,11 +146,11 @@ print('------- error data start ----------')
 for item in error_pool:
     print(item)
     if item['error'] == "NOT Volantis":
-        add_labels(item['id'],["invalid","NOT Volantis"])
+        add_labels(item['id'],'["invalid","NOT Volantis"]')
         Create_an_issue_comment_invalid(item['id'])
         Close_an_issue(item['id'])
     if item['error'] == "NETWORK ERROR":
-        add_labels(item['id'],["NETWORK WARNING"])
+        add_labels(item['id'],'["NETWORK WARNING"]')
 print('------- error data end ----------')
 print('\n')
 
