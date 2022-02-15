@@ -62,8 +62,7 @@ def github_issuse(data_pool):
 github_issuse(data_pool)
 
 pattern1 = re.compile(r'volantis|Volantis')
-pattern2 = re.compile(r'stellar|Stellar')
-pattern3 = re.compile(r'l_header|l_body')
+pattern2 = re.compile(r'l_header|l_body')
 
 def checker_url(item):
     res={}
@@ -77,12 +76,11 @@ def checker_url(item):
         return res
       result1 = pattern1.findall(data)
       result2 = pattern2.findall(data)
-      result3 = pattern3.findall(data)
-      if len(result1) > 0 and len(result3) > 0 or len(result2) > 0:
+      if len(result1) > 0 and len(result2) > 0:
           res['r'] = True
       else:
           res['r'] = False
-          res['e'] = "NOT Volantis OR Stellar"
+          res['e'] = "NOT Volantis"
     except Exception as e:
         res['r'] = False
         res['e'] = "NETWORK ERROR"
@@ -100,39 +98,11 @@ for item in data_pool:
 print('------- checker end ----------')
 print('\n')
 
-def add_labels_invalid(issue_number):
+def add_labels(issue_number,labels):
   try:
     config = load_config()
     url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number+'/labels'
-    data='["invalid"]'
-    handlers={
-      "Authorization": "token "+sys.argv[1],
-      "Accept": "application/vnd.github.v3+json"
-    }
-    r=requests.post(url=url,data=data,headers=handlers)
-    # print(r.text.encode("gbk", 'ignore').decode('gbk', 'ignore'))
-  except Exception as e:
-    print(e)
-# 内容违规 标签
-def add_labels_invalid(issue_number):
-  try:
-    config = load_config()
-    url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number+'/labels'
-    data='["invalid","NOT Volantis OR Stellar"]'
-    handlers={
-      "Authorization": "token "+sys.argv[1],
-      "Accept": "application/vnd.github.v3+json"
-    }
-    r=requests.post(url=url,data=data,headers=handlers)
-    # print(r.text.encode("gbk", 'ignore').decode('gbk', 'ignore'))
-  except Exception as e:
-    print(e)
-# 网络警告 标签
-def add_labels_network_warning(issue_number):
-  try:
-    config = load_config()
-    url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number+'/labels'
-    data='["NETWORK WARNING"]'
+    data= str(labels)
     handlers={
       "Authorization": "token "+sys.argv[1],
       "Accept": "application/vnd.github.v3+json"
@@ -175,12 +145,12 @@ def Close_an_issue(issue_number):
 print('------- error data start ----------')
 for item in error_pool:
     print(item)
-    if item['error'] == "NOT Volantis OR Stellar":
-        add_labels_invalid(item['id'])
+    if item['error'] == "NOT Volantis":
+        add_labels(item['id'],["invalid","NOT Volantis"])
         Create_an_issue_comment_invalid(item['id'])
         Close_an_issue(item['id'])
     if item['error'] == "NETWORK ERROR":
-        add_labels_network_warning(item['id'])
+        add_labels(item['id'],["NETWORK WARNING"])
 print('------- error data end ----------')
 print('\n')
 
