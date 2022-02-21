@@ -81,6 +81,7 @@ def checker_url(item):
       else:
           res['r'] = False
           res['e'] = "NOT Volantis"
+          print(data)
     except Exception as e:
         res['r'] = False
         res['e'] = "NETWORK ERROR"
@@ -146,7 +147,7 @@ print('------- error data start ----------')
 for item in error_pool:
     print(item)
     if item['error'] == "NOT Volantis":
-        add_labels(item['id'],'["Maybe NOT Volantis"]')
+        add_labels(item['id'],'["Maybe NOT Volantis WARNING"]')
         # Create_an_issue_comment_invalid(item['id'])
         # Close_an_issue(item['id'])
     if item['error'] == "NETWORK ERROR":
