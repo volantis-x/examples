@@ -147,8 +147,8 @@ for item in error_pool:
     print(item)
     if item['error'] == "NOT Volantis":
         add_labels(item['id'],'["invalid","NOT Volantis"]')
-        Create_an_issue_comment_invalid(item['id'])
-        Close_an_issue(item['id'])
+        # Create_an_issue_comment_invalid(item['id'])
+        # Close_an_issue(item['id'])
     if item['error'] == "NETWORK ERROR":
         add_labels(item['id'],'["NETWORK WARNING"]')
 print('------- error data end ----------')
