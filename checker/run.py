@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys
+from time import sleep, time
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -64,12 +65,12 @@ github_issuse(data_pool)
 pattern1 = re.compile(r'volantis|Volantis')
 pattern2 = re.compile(r'l_header|l_body')
 
-def checker_url(item):
+def checker_url(item,header_ua_random=False):
     res={}
     try:
       print(item['id'])
       print(item['url'])
-      data = request.get_data(item['url'])
+      data = request.get_data(item['url'],header_ua_random)
       if data == 'error':
         res['r'] = False
         res['e'] = "NETWORK ERROR"
@@ -81,6 +82,7 @@ def checker_url(item):
       else:
           res['r'] = False
           res['e'] = "NOT Volantis"
+          res['d'] = data
           print(data)
     except Exception as e:
         res['r'] = False
@@ -94,7 +96,15 @@ for item in data_pool:
     result = checker_url(item)
     if not result['r']:
         item['error'] = result['e']
-        error_pool.append(item)
+        if item['error'] == "NOT Volantis":
+            sleep(20)
+            result = checker_url(item,True)
+            if not result['r']:
+              item['error'] = result['e']
+              item['data'] = result['d']
+              error_pool.append(item)
+        else:
+            error_pool.append(item)
 
 print('------- checker end ----------')
 print('\n')
@@ -113,11 +123,11 @@ def add_labels(issue_number,labels):
   except Exception as e:
     print(e)
 
-def Create_an_issue_comment_invalid(issue_number):
+def Create_an_issue_comment_invalid(issue_number,invalid_data):
   try:
     config = load_config()
     url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number+'/comments'
-    data={"body":'''**⚠️ 抱歉，经过 Github Actions 检测，您的网站存在违规信息，现已下架。**\r\n\r\n如果您确认已经处理了违规信息，请重新提交issues.'''}
+    data={"body":'''**⚠️ 抱歉，Github Actions 检测到您的网站存在违规信息，现已下架。**\r\n\r\n如果您确认已经处理了违规信息，请重新提交issues.\r\n\r\n以下是 Github Actions 检测到的违规信息 [注: Github Actions 可能会触发网站防火墙]\r\n\r\n<details><summary>违规信息:</summary>\r\n\r\n```\r\n\r\n'''+invalid_data+'''```\r\n\r\n</details>\r\n\r\n'''}
     data=json.dumps(data)
     handlers={
       "Authorization": "token "+sys.argv[1],
@@ -148,8 +158,8 @@ for item in error_pool:
     print(item)
     if item['error'] == "NOT Volantis":
         add_labels(item['id'],'["Maybe NOT Volantis WARNING"]')
-        # Create_an_issue_comment_invalid(item['id'])
-        # Close_an_issue(item['id'])
+        Create_an_issue_comment_invalid(item['id'],item['data'])
+        Close_an_issue(item['id'])
     if item['error'] == "NETWORK ERROR":
         add_labels(item['id'],'["NETWORK WARNING"]')
 print('------- error data end ----------')
