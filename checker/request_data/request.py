@@ -49,10 +49,11 @@ def make_req(link,header):
 
 def get_data(link,header_ua_random=False):
     result = ''
-    if header_ua_random:
-      ua = getRandUa()
-    else:
-      ua = 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
+    ua = getRandUa()
+    # if header_ua_random:
+    #   ua = getRandUa()
+    # else:
+    #   ua = 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
     print(ua)
     header = {
       'User-Agent': ua,

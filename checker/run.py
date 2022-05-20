@@ -70,6 +70,10 @@ def checker_url(item,header_ua_random=False):
     try:
       print(item['id'])
       print(item['url'])
+      # 85 老版本
+      if item['id'] == "85":
+        res['r'] = True
+        return res
       data = request.get_data(item['url'],header_ua_random)
       if data == 'error':
         res['r'] = False
