@@ -46,15 +46,10 @@ def github_issuse(data_pool):
                     print(issues_id)
                     issues_linklist = issues_soup.find_all('pre')
                     source = issues_linklist[0].text
-                    issues_labels = set()
-                    issues_labels_a = issues_soup.find_all('a', {'class': 'IssueLabel'})
-                    for i in issues_labels_a:
-                      issues_labels.add(i.text.strip())
-                    print(issues_labels)
                     if "{" in source:
                         source = json.loads(source)
                         print(source["url"])
-                        data_pool.append({'id': issues_id, 'url': source['url'], issues_labels: issues_labels})
+                        data_pool.append({'id': issues_id, 'url': source['url']})
                 except:
                     continue
     except Exception as e:
@@ -131,9 +126,8 @@ for item in data_pool:
               error_pool.append(item)
         else:
             error_pool.append(item)
-    else:
-      if "NETWORK ERROR" in item['issues_labels']:
-        delete_labels(item['id'],"NETWORK ERROR")
+    # elif "NETWORK ERROR" in item['issues_labels']:
+    #     delete_labels(item['id'],"NETWORK ERROR")
 
 print('------- checker end ----------')
 print('\n')
