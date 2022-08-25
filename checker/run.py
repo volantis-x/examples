@@ -105,7 +105,7 @@ def checker_url(item,header_ua_random=False):
 def delete_labels(issue_number,labels):
   try:
     config = load_config()
-    url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number+'labels/'+labels
+    url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number+'/labels/'+labels
     handlers={
       "Authorization": "token "+sys.argv[1],
       "Accept": "application/vnd.github.v3+json"
@@ -135,7 +135,7 @@ for item in data_pool:
     else:
       print("OK")
       if "NETWORK WARNING" in item['labels']:
-          print("delete_label NETWORK WARNING...")
+          print("delete label NETWORK WARNING...")
           delete_labels(item['id'],"NETWORK WARNING")
 
 print('------- checker end ----------')
