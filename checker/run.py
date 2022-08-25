@@ -134,8 +134,9 @@ for item in data_pool:
             error_pool.append(item)
     else:
       print("OK")
-      if "NETWORK ERROR" in item['labels']:
-          delete_labels(item['id'],"NETWORK ERROR")
+      if "NETWORK WARNING" in item['labels']:
+          print("delete_label NETWORK WARNING...")
+          delete_labels(item['id'],"NETWORK WARNING")
 
 print('------- checker end ----------')
 print('\n')
