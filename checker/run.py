@@ -46,10 +46,15 @@ def github_issuse(data_pool):
                     print(issues_id)
                     issues_linklist = issues_soup.find_all('pre')
                     source = issues_linklist[0].text
+                    issues_labels = set()
+                    issues_labels_a = issues_soup.find_all('a', {'class': 'IssueLabel'})
+                    for i in issues_labels_a:
+                      issues_labels.add(i.text.strip())
+                    print(issues_labels)
                     if "{" in source:
                         source = json.loads(source)
                         print(source["url"])
-                        data_pool.append({'id': issues_id, 'url': source['url']})
+                        data_pool.append({'id': issues_id, 'url': source['url'], issues_labels: issues_labels})
                 except:
                     continue
     except Exception as e:
@@ -64,6 +69,8 @@ github_issuse(data_pool)
 
 pattern1 = re.compile(r'volantis|Volantis')
 pattern2 = re.compile(r'l_header|l_body')
+pattern3 = re.compile(r'app.js|app(.*).js|volantis-x|pjax_')
+
 
 def checker_url(item,header_ua_random=False):
     res={}
@@ -81,7 +88,9 @@ def checker_url(item,header_ua_random=False):
         return res
       result1 = pattern1.findall(data)
       result2 = pattern2.findall(data)
-      if len(result1) > 0 and len(result2) > 0:
+      result3 = pattern3.findall(data)
+
+      if len(result1) > 0 and len(result2) > 0 and len(result3) > 0:
           res['r'] = True
       else:
           res['r'] = False
@@ -92,6 +101,19 @@ def checker_url(item,header_ua_random=False):
         res['r'] = False
         res['e'] = "NETWORK ERROR"
     return res
+
+def delete_labels(issue_number,labels):
+  try:
+    config = load_config()
+    url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number+'labels/'+labels
+    handlers={
+      "Authorization": "token "+sys.argv[1],
+      "Accept": "application/vnd.github.v3+json"
+    }
+    r=requests.delete(url=url, headers=handlers)
+    # print(r.text.encode("gbk", 'ignore').decode('gbk', 'ignore'))
+  except Exception as e:
+    print(e)
 
 
 print('------- checker start ----------')
@@ -109,6 +131,9 @@ for item in data_pool:
               error_pool.append(item)
         else:
             error_pool.append(item)
+    else:
+      if "NETWORK ERROR" in item['issues_labels']:
+        delete_labels(item['id'],"NETWORK ERROR")
 
 print('------- checker end ----------')
 print('\n')
