@@ -54,7 +54,7 @@ def github_issuse(data_pool):
                     if "{" in source:
                         source = json.loads(source)
                         print(source["url"])
-                        data_pool.append({'id': issues_id, 'url': source['url'], issues_labels: issues_labels})
+                        data_pool.append({'id': issues_id, 'url': source['url'], "labels": list(issues_labels)})
                 except:
                     continue
     except Exception as e:
@@ -119,6 +119,7 @@ def delete_labels(issue_number,labels):
 print('------- checker start ----------')
 error_pool=[]
 for item in data_pool:
+    print(item)
     result = checker_url(item)
     if not result['r']:
         item['error'] = result['e']
@@ -133,8 +134,8 @@ for item in data_pool:
             error_pool.append(item)
     else:
       print("OK")
-    if "NETWORK ERROR" in item['issues_labels']:
-        delete_labels(item['id'],"NETWORK ERROR")
+      if "NETWORK ERROR" in item['labels']:
+          delete_labels(item['id'],"NETWORK ERROR")
 
 print('------- checker end ----------')
 print('\n')
@@ -186,12 +187,12 @@ def Close_an_issue(issue_number):
 print('------- error data start ----------')
 for item in error_pool:
     print(item)
-    # if item['error'] == "NOT Volantis":
-    #     add_labels(item['id'],'["Maybe NOT Volantis WARNING"]')
-    #     Create_an_issue_comment_invalid(item['id'],item['data'])
-    #     Close_an_issue(item['id'])
-    # if item['error'] == "NETWORK ERROR":
-    #     add_labels(item['id'],'["NETWORK WARNING"]')
+    if item['error'] == "NOT Volantis":
+        add_labels(item['id'],'["Maybe NOT Volantis WARNING"]')
+        Create_an_issue_comment_invalid(item['id'],item['data'])
+        Close_an_issue(item['id'])
+    if item['error'] == "NETWORK ERROR":
+        add_labels(item['id'],'["NETWORK WARNING"]')
 print('------- error data end ----------')
 print('\n')
 
