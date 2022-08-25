@@ -46,10 +46,15 @@ def github_issuse(data_pool):
                     print(issues_id)
                     issues_linklist = issues_soup.find_all('pre')
                     source = issues_linklist[0].text
+                    issues_labels = set()
+                    issues_labels_a = issues_soup.find_all('div', {'class': 'js-issue-labels'})[0].find_all('a', {'class': 'IssueLabel'})
+                    for i in issues_labels_a:
+                      issues_labels.add(i.text.strip())
+                    print(issues_labels)
                     if "{" in source:
                         source = json.loads(source)
                         print(source["url"])
-                        data_pool.append({'id': issues_id, 'url': source['url']})
+                        data_pool.append({'id': issues_id, 'url': source['url'], issues_labels: issues_labels})
                 except:
                     continue
     except Exception as e:
@@ -64,7 +69,7 @@ github_issuse(data_pool)
 
 pattern1 = re.compile(r'volantis|Volantis')
 pattern2 = re.compile(r'l_header|l_body')
-pattern3 = re.compile(r'app.js|app(.*).js|volantis-x|pjax_')
+pattern3 = re.compile(r'app.js|volantis-x|pjax_')
 
 
 def checker_url(item,header_ua_random=False):
@@ -106,7 +111,7 @@ def delete_labels(issue_number,labels):
       "Accept": "application/vnd.github.v3+json"
     }
     r=requests.delete(url=url, headers=handlers)
-    # print(r.text.encode("gbk", 'ignore').decode('gbk', 'ignore'))
+    print(r.text.encode("gbk", 'ignore').decode('gbk', 'ignore'))
   except Exception as e:
     print(e)
 
@@ -126,8 +131,10 @@ for item in data_pool:
               error_pool.append(item)
         else:
             error_pool.append(item)
-    # elif "NETWORK ERROR" in item['issues_labels']:
-    #     delete_labels(item['id'],"NETWORK ERROR")
+    else:
+      print("OK")
+    if "NETWORK ERROR" in item['issues_labels']:
+        delete_labels(item['id'],"NETWORK ERROR")
 
 print('------- checker end ----------')
 print('\n')
@@ -179,12 +186,12 @@ def Close_an_issue(issue_number):
 print('------- error data start ----------')
 for item in error_pool:
     print(item)
-    if item['error'] == "NOT Volantis":
-        add_labels(item['id'],'["Maybe NOT Volantis WARNING"]')
-        Create_an_issue_comment_invalid(item['id'],item['data'])
-        Close_an_issue(item['id'])
-    if item['error'] == "NETWORK ERROR":
-        add_labels(item['id'],'["NETWORK WARNING"]')
+    # if item['error'] == "NOT Volantis":
+    #     add_labels(item['id'],'["Maybe NOT Volantis WARNING"]')
+    #     Create_an_issue_comment_invalid(item['id'],item['data'])
+    #     Close_an_issue(item['id'])
+    # if item['error'] == "NETWORK ERROR":
+    #     add_labels(item['id'],'["NETWORK WARNING"]')
 print('------- error data end ----------')
 print('\n')
 
