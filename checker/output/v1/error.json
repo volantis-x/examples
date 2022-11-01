@@ -1,14 +1,5 @@
 [
     {
-        "id": "96",
-        "url": "https://",
-        "labels": [
-            "example",
-            "NETWORK WARNING"
-        ],
-        "error": "NETWORK ERROR"
-    },
-    {
         "id": "90",
         "url": "https://blog.beacox.place",
         "labels": [
