@@ -194,6 +194,10 @@ for item in error_pool:
         Close_an_issue(item['id'])
     if item['error'] == "NETWORK ERROR":
         add_labels(item['id'],'["NETWORK WARNING"]')
+        if item['url'] == "https://":
+            add_labels(item['id'],'["invalid"]')
+            Create_an_issue_comment_invalid(item['id'],"无效 URL")
+            Close_an_issue(item['id'])
 print('------- error data end ----------')
 print('\n')
 
