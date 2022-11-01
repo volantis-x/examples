@@ -159,7 +159,7 @@ def Create_an_issue_comment_invalid(issue_number,invalid_data):
   try:
     config = load_config()
     url='https://api.github.com/repos/'+config['issues']['repo']+'/issues/'+issue_number+'/comments'
-    data={"body":'''**⚠️ 抱歉，Github Actions 检测到您的网站存在违规信息，现已下架。**\r\n\r\n如果您确认已经处理了违规信息，请重新提交issues.\r\n\r\n以下是 Github Actions 检测到的违规信息 [注: Github Actions 可能会触发网站防火墙]\r\n\r\n<details><summary>违规信息:</summary>\r\n\r\n```\r\n\r\n'''+invalid_data+'''```\r\n\r\n</details>\r\n\r\n'''}
+    data={"body":'''**⚠️ 抱歉，Github Actions 检测到您的网站存在违规信息，现已下架。**\r\n\r\n如果您确认已经处理了违规信息，请重新提交issues.\r\n\r\n以下是 Github Actions 检测到的违规信息 [注: Github Actions 可能会触发网站防火墙]\r\n\r\n<details><summary>违规信息:</summary>\r\n\r\n```\r\n\r\n'''+invalid_data+'''\r\n\r\n```\r\n\r\n</details>\r\n\r\n'''}
     data=json.dumps(data)
     handlers={
       "Authorization": "token "+sys.argv[1],
