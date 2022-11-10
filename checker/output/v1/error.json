@@ -3,8 +3,8 @@
         "id": "74",
         "url": "https://james1badcreeper.github.io/",
         "labels": [
-            "NETWORK WARNING",
-            "example"
+            "example",
+            "NETWORK WARNING"
         ],
         "error": "NETWORK ERROR"
     }
