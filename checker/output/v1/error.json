@@ -3,8 +3,8 @@
         "id": "74",
         "url": "https://james1badcreeper.github.io/",
         "labels": [
-            "NETWORK WARNING",
-            "example"
+            "example",
+            "NETWORK WARNING"
         ],
         "error": "NETWORK ERROR"
     },
@@ -12,7 +12,8 @@
         "id": "46",
         "url": "https://blog.coolchong.cn",
         "labels": [
-            "example"
+            "example",
+            "NETWORK WARNING"
         ],
         "error": "NETWORK ERROR"
     }
