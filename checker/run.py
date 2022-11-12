@@ -82,6 +82,14 @@ def checker_url(item,header_ua_random=False):
         res['r'] = True
         return res
       data = request.get_data(item['url'],header_ua_random)
+      if data == 'error::404':
+        res['r'] = False
+        res['e'] = "error::404"
+        return res
+      if data == 'error::not200':
+        res['r'] = False
+        res['e'] = "NETWORK ERROR"
+        return res
       if data == 'error':
         res['r'] = False
         res['e'] = "NETWORK ERROR"
@@ -198,6 +206,11 @@ for item in error_pool:
             add_labels(item['id'],'["invalid"]')
             Create_an_issue_comment_invalid(item['id'],"无效 URL")
             Close_an_issue(item['id'])
+    if item['error'] == "error::404":
+        add_labels(item['id'],'["NETWORK WARNING"]')
+        add_labels(item['id'],'["invalid"]')
+        Create_an_issue_comment_invalid(item['id'],"<Response [404]>")
+        Close_an_issue(item['id'])
 print('------- error data end ----------')
 print('\n')
 

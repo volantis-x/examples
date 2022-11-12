@@ -38,8 +38,11 @@ def make_req(link,header):
     s.close()
     r.encoding = 'utf-8'
     result = r.text.encode("gbk", 'ignore').decode('gbk', 'ignore')
+    print(str(r))
     if str(r) == '<Response [404]>':
-        result = 'error'
+        result = 'error::404'
+    if str(r) != '<Response [200]>':
+        result = 'error::not200'
   except Exception as e:
       print(e)
       print(e.__traceback__.tb_frame.f_globals["__file__"])
