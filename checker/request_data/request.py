@@ -41,8 +41,10 @@ def make_req(link,header):
     print(str(r))
     if str(r) == '<Response [404]>':
         result = 'error::404'
+        return result
     if str(r) != '<Response [200]>':
         result = 'error::not200'
+        return result
   except Exception as e:
       print(e)
       print(e.__traceback__.tb_frame.f_globals["__file__"])
