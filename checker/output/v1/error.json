@@ -3,8 +3,8 @@
         "id": "46",
         "url": "https://blog.coolchong.cn",
         "labels": [
-            "NETWORK WARNING",
-            "example"
+            "example",
+            "NETWORK WARNING"
         ],
         "error": "NETWORK ERROR"
     }
