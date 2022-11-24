@@ -3,8 +3,8 @@
         "id": "79",
         "url": "https://mymyu.top",
         "labels": [
-            "example",
-            "NETWORK WARNING"
+            "NETWORK WARNING",
+            "example"
         ],
         "error": "NETWORK ERROR"
     },
@@ -12,8 +12,8 @@
         "id": "46",
         "url": "https://blog.coolchong.cn",
         "labels": [
-            "example",
-            "NETWORK WARNING"
+            "NETWORK WARNING",
+            "example"
         ],
         "error": "NETWORK ERROR"
     }
