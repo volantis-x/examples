@@ -58,7 +58,8 @@ def github_issuse(data_pool):
                         source = json.loads(source)
                         print(source["url"])
                         data_pool.append({'id': issues_id, 'url': source['url'], "labels": list(issues_labels)})
-                except:
+                except Exception as e:
+                    print(e)
                     continue
     except Exception as e:
         print(e)
