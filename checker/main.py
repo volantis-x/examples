@@ -7,6 +7,7 @@ import re
 import yaml
 import request
 import json
+import os
 
 version = 'v2'
 outputdir = version  # 输出文件结构变化时，更新输出路径版本
