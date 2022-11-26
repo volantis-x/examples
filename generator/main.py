@@ -35,6 +35,16 @@ def getData(repo,parameter,sort,data_pool,json_pool):
             github = request.get_data(url)
             soup = BeautifulSoup(github, 'html.parser')
             main_content = soup.find_all('div', {'aria-label': 'Issues'})
+
+            issues_labels = set()
+            issues_labels_a = issues_soup.find_all('div', {'class': 'js-issue-labels'})[0].find_all('a', {'class': 'IssueLabel'})
+            for i in issues_labels_a:
+              issues_labels.add(i.text.strip())
+            print(issues_labels)
+            if "NETWORK WARNING" in list(issues_labels):
+                print("skip this.")
+                continue
+
             if len(main_content):
                 linklist = main_content[0].find_all('a', {'class': 'Link--primary'})
             if len(linklist) == 0:
