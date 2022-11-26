@@ -61,6 +61,7 @@ def github_issuse(data_pool):
                 except:
                     continue
     except Exception as e:
+        print(e)
         print('> end')
 
     print('------- github issues end ----------')
