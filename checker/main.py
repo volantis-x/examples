@@ -5,9 +5,11 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import yaml
-from request_data import request
+import request
 import json
 
+version = 'v2'
+outputdir = version  # 输出文件结构变化时，更新输出路径版本
 data_pool = []
 
 def load_config():
@@ -214,6 +216,16 @@ for item in error_pool:
 print('------- error data end ----------')
 print('\n')
 
-filename='checker/output/v1/error.json'
+
+def mkdir(path):
+    folder = os.path.exists(path)
+    if not folder:
+        os.makedirs(path)
+        print("create dir:", path)
+    else:
+        print("dir exists:", path)
+
+mkdir(outputdir)
+filename = outputdir + '/error.json'
 with open(filename,'w',encoding='utf-8') as file_obj:
    json.dump(error_pool,file_obj,ensure_ascii=False,indent=4)

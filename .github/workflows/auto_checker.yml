@@ -1,4 +1,4 @@
-name: checker
+name: Checker
 
 on:
   schedule:
@@ -21,17 +21,14 @@ jobs:
         pip install requests[security]
     - name: Update links #更新
       run: |
-        python checker/run.py ${{ secrets.GITHUB_TOKEN }}
-        python generator/run.py
-        echo `date +"%Y-%m-%d %H:%M:%S"` begin > checker/time.log
-
-    - name: Commit #更新日志到GitHub仓库
-      run: |
-        git config --global user.email github-actions[bot]@users.noreply.github.com
-        git config --global user.name github-actions
-        git add .
-        git commit -m "Generate Json" -a
-    - name: Push changes
-      uses: ad-m/github-push-action@master
+        python checker/main.py ${{ secrets.GITHUB_TOKEN }}
+        python generator/main.py
+    - name: Commit & Push
+      uses: action-x/commit@v2.9
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        push-branch: 'output'
+        force-push: 'true'
+        commit-message: 'Generate Json'
+        name: github-actions[bot]
+        email: github-actions[bot]@noreply.github.com
