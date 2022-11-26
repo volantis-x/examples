@@ -33,7 +33,7 @@ def github_issuse(data_pool):
                 label_plus = ''
             github = request.get_data('https://github.com/' +
                              config['issues']['repo'] +
-                             '/issues?q=is%3A' + config['issues']['state'] + str(label_plus) + '&page=' + str(number))
+                             '/issues?q=is%3Aopen' + str(label_plus) + '&page=' + str(number))
             soup = BeautifulSoup(github, 'html.parser')
             main_content = soup.find_all('div',{'aria-label': 'Issues'})
             linklist = main_content[0].find_all('a', {'class': 'Link--primary'})
