@@ -230,4 +230,4 @@ mkdir(outputdir)
 filename = outputdir + '/error.json'
 with open(filename,'w',encoding='utf-8') as file_obj:
     data = {'version': version, 'content': error_pool}
-    json.dump(error_pool, file_obj, ensure_ascii=False, indent=2)
+    json.dump(data, file_obj, ensure_ascii=False, indent=2)
