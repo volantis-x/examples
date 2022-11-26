@@ -13,7 +13,7 @@ outputdir = version  # 输出文件结构变化时，更新输出路径版本
 data_pool = []
 
 def load_config():
-    f = open('_config.yml', 'r',encoding='utf-8')
+    f = open('config.yml', 'r',encoding='utf-8')
     ystr = f.read()
     ymllist = yaml.load(ystr, Loader=yaml.FullLoader)
     return ymllist
