@@ -1,18 +1,41 @@
----
 name: 示例博客
-about: 自助添加示例博客。请遵守 JSON 格式，在双引号中填写。
-title:
-labels: 'example'
-assignees: ''
-
----
-<!-- 请在双引号中填写，不要修改模板格式 -->
-```json
-{
-    "title": "",
-    "url": "https://",
-    "avatar": "",
-    "screenshot": "",
-    "description": ""
-}
-```
+description: 自助添加示例博客。
+labels: ['example']
+body:
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 检查清单
+      description: 请认真检查以下清单中的每一项，并在相符的项前打勾。
+      options:
+        - required: true
+          label: 合法的、非营利性、无商业广告、无木马植入。
+        - required: true
+          label: 有实质性原创内容的 HTTPS 站点，发布过至少 5 篇原创文章，内容题材不限。
+        - required: true
+          label: 有独立域名，非免费域名。
+  - type: textarea
+    id: config-file
+    validations:
+      required: true
+    attributes:
+      label: 站点信息
+      description: 请在双引号中填写，不要修改格式。
+      value: |
+        ```json
+        {
+            "title": "",
+            "url": "",
+            "avatar": "",
+            "screenshot": "",
+            "description": ""
+        }
+        ```
+  - type: input
+    id: friends-html
+    attributes:
+      label: 预览页面
+      description: 请输入您的网站地址。
+      placeholder: "如: https://xaoxuu.com"
+    validations:
+      required: true
