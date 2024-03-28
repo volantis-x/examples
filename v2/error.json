@@ -1,0 +1,32 @@
+{
+  "version": "v2",
+  "content": [
+    {
+      "id": "117",
+      "url": "justpureh2o.cn",
+      "labels": [
+        "NETWORK WARNING",
+        "example"
+      ],
+      "error": "NETWORK ERROR"
+    },
+    {
+      "id": "105",
+      "url": "https://wndbac.cn",
+      "labels": [
+        "NETWORK WARNING",
+        "example"
+      ],
+      "error": "NETWORK ERROR"
+    },
+    {
+      "id": "33",
+      "url": "https://www.233213fedf.tk/",
+      "labels": [
+        "NETWORK WARNING",
+        "example"
+      ],
+      "error": "NETWORK ERROR"
+    }
+  ]
+}
