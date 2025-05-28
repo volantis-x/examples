@@ -8,6 +8,7 @@ import yaml
 import request
 import json
 import os
+import myselenium
 
 version = 'v2'
 outputdir = version  # 输出文件结构变化时，更新输出路径版本
@@ -31,12 +32,11 @@ def github_issuse(data_pool):
                 label_plus = '+label%3A' + config['issues']['label']
             else:
                 label_plus = ''
-            github = request.get_data('https://github.com/' +
+            github = myselenium.get('https://github.com/' +
                              config['issues']['repo'] +
                              '/issues?q=is%3Aopen' + str(label_plus) + '&page=' + str(number))
             soup = BeautifulSoup(github, 'html.parser')
-            main_content = soup.find_all('div',{'aria-label': 'Issues'})
-            linklist = main_content[0].find_all('a', {'class': 'Link--primary'})
+            linklist = soup.find_all('a', {'data-testid': 'issue-pr-title-link'})
             if len(linklist) == 0:
                 print('> end')
                 break
