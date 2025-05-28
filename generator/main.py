@@ -46,7 +46,7 @@ def getData(repo,parameter,sort,data_pool,json_pool):
                 try:
 
                     issues_labels = set()
-                    issues_labels_a = issues_soup.find_all('span', {'class': 'prc-Text-Text-0-ima0'})
+                    issues_labels_a = issues_soup.find_all('span', {'class': 'prc-Text-Text-0ima0'})
                     for i in issues_labels_a:
                       issues_labels.add(i.text.strip())
                     print(issues_labels)
