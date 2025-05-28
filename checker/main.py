@@ -50,7 +50,7 @@ def github_issuse(data_pool):
                     issues_linklist = issues_soup.find_all('pre')
                     source = issues_linklist[0].text
                     issues_labels = set()
-                    issues_labels_a = issues_soup.find_all('div', {'class': 'js-issue-labels'})[0].find_all('a', {'class': 'IssueLabel'})
+                    issues_labels_a = issues_soup.find_all('span', {'class': 'prc-Text-Text-0ima0'})
                     for i in issues_labels_a:
                       issues_labels.add(i.text.strip())
                     print(issues_labels)
