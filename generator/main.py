@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-# author: https://github.com/BeaCox
+
 from bs4 import BeautifulSoup
 import os
 import request
 import json
 import config
+import myselenium
 
 version = 'v2'
 outputdir = version  # 输出文件结构变化时，更新输出路径版本
@@ -32,11 +33,9 @@ def getData(repo,parameter,sort,data_pool,json_pool):
             if sort:
                 url = url + '+sort%3A' + sort
             print('parse:', url)
-            github = request.get_data(url)
+            github = myselenium.get(url)
             soup = BeautifulSoup(github, 'html.parser')
-            main_content = soup.find_all('div', {'aria-label': 'Issues'})
-            if len(main_content):
-                linklist = main_content[0].find_all('a', {'class': 'Link--primary'})
+            linklist = soup.find_all('a', {'data-testid': 'issue-pr-title-link'})
             if len(linklist) == 0:
                 print('> end')
                 break
