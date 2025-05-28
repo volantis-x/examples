@@ -28,6 +28,15 @@ def fix_label(a):
            c.append(t)
     return c
 
+def get_issue_id(a):
+    for i in range(len(a)):
+        #取出索引对应的值
+        t=a[i]
+        #判断值是否存在在序列b中
+        if "#" in t:
+            return t
+    return "0#0"
+
 def load_config():
     f = open('config.yml', 'r',encoding='utf-8')
     ystr = f.read()
@@ -59,14 +68,15 @@ def github_issuse(data_pool):
                 issues_page = request.get_data(issueslink)
                 issues_soup = BeautifulSoup(issues_page, 'html.parser')
                 try:
-                    issues_id = issues_soup.find_all('span', {'class': 'f1-light'})[0].text.strip().split('#')[1]
-                    print(issues_id)
+                    
                     issues_linklist = issues_soup.find_all('pre')
                     source = issues_linklist[0].text
                     issues_labels = set()
                     issues_labels_a = issues_soup.find_all('span', {'class': 'prc-Text-Text-0ima0'})
                     for i in issues_labels_a:
                       issues_labels.add(i.text.strip())
+                    issues_id = get_issue_id(list(issues_labels))
+                    print(issues_id)
                     issues_labels=fix_label(list(issues_labels))
                     print(issues_labels)
                     if "{" in source:
