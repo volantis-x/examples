@@ -14,6 +14,20 @@ version = 'v2'
 outputdir = version  # 输出文件结构变化时，更新输出路径版本
 data_pool = []
 
+def fix_label(a):
+    b=["example","invalid","Maybe NOT Volantis WARNING","NETWORK ERROR","NETWORK WARNING","NOT HTTPS","NOT Volantis","🗑️ Suggest to close"]
+    #定义空列表
+    c=[]
+    #range(len(a))取的为列表a的索引，根据a的
+    for i in range(len(a)):
+        #取出索引对应的值
+        t=a[i]
+        #判断值是否存在在序列b中
+        if t in b:
+           #如果序列在b中，则写入序列c
+           c.append(t)
+    return c
+
 def load_config():
     f = open('config.yml', 'r',encoding='utf-8')
     ystr = f.read()
@@ -53,11 +67,12 @@ def github_issuse(data_pool):
                     issues_labels_a = issues_soup.find_all('span', {'class': 'prc-Text-Text-0ima0'})
                     for i in issues_labels_a:
                       issues_labels.add(i.text.strip())
+                    issues_labels=fix_label(list(issues_labels))
                     print(issues_labels)
                     if "{" in source:
                         source = json.loads(source)
                         print(source["url"])
-                        data_pool.append({'id': issues_id, 'url': source['url'], "labels": list(issues_labels)})
+                        data_pool.append({'id': issues_id, 'url': source['url'], "labels": issues_labels})
                 except Exception as e:
                     print(e)
                     continue
