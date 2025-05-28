@@ -14,7 +14,7 @@ json_pool = []
 baselink = 'https://github.com/'
 
 def fix_label(a):
-    b=["example","invalid","Maybe NOT Volantis WARNING","NETWORK ERROR","NETWORK WARNING","NOT HTTPS","NOT Volantis","🗑️ Suggest to close"]
+    b=["example","invalid","Maybe NOT Volantis WARNING","NETWORK ERROR","NETWORK WARNING","NOT HTTPS","NOT Volantis","🗑️ Suggest to close","SKIP"]
     #定义空列表
     c=[]
     #range(len(a))取的为列表a的索引，根据a的
@@ -67,7 +67,7 @@ def getData(repo,parameter,sort,data_pool,json_pool):
                       issues_labels.add(i.text.strip())
                     issues_labels=fix_label(list(issues_labels))
                     print(issues_labels)
-                    if "NETWORK WARNING" in issues_labels:
+                    if "NETWORK WARNING" in issues_labels and "SKIP" not in issues_labels:
                         print("skip this.")
                         continue
 
