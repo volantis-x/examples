@@ -40,7 +40,7 @@ def get(url):
   driver = webdriver.Chrome(options = chrome_options)
   driver.get(url)
   #WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "kw")))
-  driver.implicitly_wait(10)
+  driver.implicitly_wait(15)
   time.sleep(2)
   #print(driver.title)
   html= driver.page_source
