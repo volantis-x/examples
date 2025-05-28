@@ -15,7 +15,7 @@ outputdir = version  # 输出文件结构变化时，更新输出路径版本
 data_pool = []
 
 def fix_label(a):
-    b=["example","invalid","Maybe NOT Volantis WARNING","NETWORK ERROR","NETWORK WARNING","NOT HTTPS","NOT Volantis","🗑️ Suggest to close"]
+    b=["example","invalid","Maybe NOT Volantis WARNING","NETWORK ERROR","NETWORK WARNING","NOT HTTPS","NOT Volantis","🗑️ Suggest to close","SKIP"]
     #定义空列表
     c=[]
     #range(len(a))取的为列表a的索引，根据a的
@@ -107,8 +107,8 @@ def checker_url(item,header_ua_random=False):
     try:
       print(item['id'])
       print(item['url'])
-      # 85 老版本
-      if item['id'] == "85":
+      # SKIP
+      if "SKIP" in item['labels']:
         res['r'] = True
         return res
       data = request.get_data(item['url'],header_ua_random)
