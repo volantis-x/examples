@@ -6,6 +6,7 @@ from pyvirtualdisplay import Display
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import time
 
 display = Display(visible=0, size=(800, 800))  
 display.start()
@@ -40,5 +41,8 @@ def get(url):
   driver.get(url)
   #WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "kw")))
   driver.implicitly_wait(10)
+  time.sleep(2)
   #print(driver.title)
-  return driver.page_source
+  html= driver.page_source
+  driver.close()
+  return html
