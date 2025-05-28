@@ -34,8 +34,8 @@ def get_issue_id(a):
         t=a[i]
         #判断值是否存在在序列b中
         if "#" in t:
-            return t
-    return "0#0"
+            return int(t[1:])
+    return 0
 
 def load_config():
     f = open('config.yml', 'r',encoding='utf-8')
