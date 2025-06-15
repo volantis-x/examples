@@ -1,0 +1,208 @@
+{
+  "version": "v2",
+  "content": [
+    {
+      "title": "逝水锦遥",
+      "url": "https://www.asjin.com/",
+      "avatar": "https://www.asjin.com/images/ssjinyao.png",
+      "screenshot": "https://www.asjin.com/images/screenshot-asjin.com.png",
+      "description": "sre devops 运维;关山难越，谁悲失路之人; 萍水相逢，尽是他乡之客 ~"
+    },
+    {
+      "title": "ai whale",
+      "url": "https://ai.he0xwhale.xyz/",
+      "avatar": "https://raw.githubusercontent.com/he0xwhale/ai_blog/refs/heads/gh-pages/images/logo.png",
+      "screenshot": "https://raw.githubusercontent.com/he0xwhale/ai_blog/refs/heads/main/assets/images/ai_blog.png",
+      "description": "ai技术与ai编程相关"
+    },
+    {
+      "title": "XiaoHanys",
+      "url": "https://blog.xiaohanys.xyz/",
+      "avatar": "https://blog.xiaohanys.xyz/images/mao.jpeg",
+      "screenshot": "https://picshack.net/ib/pemsVvpswJ.png",
+      "description": "记录知识"
+    },
+    {
+      "title": "OkraWorks",
+      "url": "https://okraworks.cn",
+      "avatar": "https://pic.okraworks.cn/2024-11-14-13-21-56.png",
+      "screenshot": "https://pic.okraworks.cn/2024-11-16-22-43-42.png",
+      "description": "创意共享，资源交汇"
+    },
+    {
+      "title": "星雨夜澈",
+      "url": "https://dxsm.github.io",
+      "avatar": "https://cdn.jsdelivr.net/gh/dxsm/cdn/images/avatar3.jpg",
+      "screenshot": "https://unpkg.com/mhgoos@0.0.1655518546941/dxsm.github.io.png",
+      "description": "专注与芯片设计，Scala，Python的技术博客"
+    },
+    {
+      "title": "JustPureH2O的博客",
+      "url": "https://justpureh2o.cn",
+      "avatar": "https://pic.imgdb.cn/item/65acc265871b83018a982471.png",
+      "screenshot": "https://pic.imgdb.cn/item/65d95a219f345e8d03a3c297.png",
+      "description": "算法、整活"
+    },
+    {
+      "title": "jeanhua's blog",
+      "url": "https://www.blog.jeanhua.cn/",
+      "avatar": "https://q1.qlogo.cn/g?b=qq&nk=2207739460&src_uin=www.jlwz.cn&s=0",
+      "screenshot": "https://pic1.imgdb.cn/item/681ee37a58cb8da5c8eaaf64.png",
+      "description": "jeanhua的个人博客"
+    },
+    {
+      "title": "vayfou",
+      "url": "https://vayfou.cn",
+      "avatar": "https://vayfou.cn/asset/img/avatar.png",
+      "screenshot": "https://vayfou.cn/asset/img/screenshot.png",
+      "description": "心无役，思无邪。"
+    },
+    {
+      "title": "无名博客",
+      "url": "https://wuminboke.site",
+      "avatar": "https://bu.dusays.com/2024/07/23/669f7b016ad0b.jpg",
+      "screenshot": "https://i.imgur.com/TXY0M5n.png",
+      "description": "一个无聊的人罢了"
+    },
+    {
+      "title": "忆星辰 | 博客",
+      "url": "https://www.extingstudio.com",
+      "avatar": "https://raw.githubusercontent.com/BillScott1024/cdn-blog/master/images/avatar.webp",
+      "screenshot": "https://user-images.githubusercontent.com/22955480/141688196-143ca395-b9c9-4d69-9115-99799a3a4cfe.png",
+      "description": "忆星辰的个人技术博客"
+    },
+    {
+      "title": "小TiD笔记",
+      "url": "https://main.tidnotes.top",
+      "avatar": "https://cdn.cbd.int/tidnotes-blog-static@1.0.0/img/avatar.jpg",
+      "screenshot": "https://cdn.cbd.int/tidnotes-blog-static@1.0.0/img/tid_page.png",
+      "description": "技术无止境，随心随所记"
+    },
+    {
+      "title": "小破绽",
+      "url": "https://www.wonique.space/",
+      "avatar": "https://s11.ax1x.com/2023/04/22/p9VXGsH.jpg",
+      "screenshot": "https://s21.ax1x.com/2024/04/07/pFqzEWV.png",
+      "description": "备忘，随笔，算法，编程"
+    },
+    {
+      "title": "前端ovo ",
+      "url": "https://www.qdovo.com",
+      "avatar": "https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/timg.jpeg",
+      "screenshot": "https://cdn.qdovo.com/img/screenshot.png",
+      "description": "前端，js，vue，react，面试经"
+    },
+    {
+      "title": "邢平cn-分享踩过的坑、写的笔记等",
+      "url": "https://xingpingcn.top/",
+      "avatar": "https://jsd.cdn.zzko.cn/gh/xingpingcn/picx-images-hosting@master/20230419/%E8%87%AD%E5%8D%B7%E5%AE%9D.74vk4cdjex40.jpg",
+      "screenshot": "https://jsd.onmicrosoft.cn/npm/p-hosting-for-xp@1.0.25/20230508/Snipaste_2023-05-08_00-59-44.2lzfpy52dcu0.webp",
+      "description": "分享踩过的坑、写的笔记等"
+    },
+    {
+      "title": "北辰小栈",
+      "url": "https://www.mz-zone.cn",
+      "avatar": "https://cdn.jsdelivr.net/gh/casteller/berrychenpic/beychen.gif",
+      "screenshot": "https://cdn.jsdelivr.net/gh/casteller/berrychenpic/beichen.png",
+      "description": "别让怯弱否定了自己，别让懒惰耽误了青春"
+    },
+    {
+      "title": "weijiajin",
+      "description": "Stay Hungry.Stay Foolish.",
+      "screenshot": "https://cdn.jsdelivr.net/gh/feelheart7/CDN@1.0/blog/images/index.png",
+      "url": "https://volantis.weijiajin.com",
+      "avatar": "https://cdn.jsdelivr.net/gh/feelheart7/CDN@1.0/blog/images/logo.png",
+      "version": "版本：^4.0"
+    },
+    {
+      "title": "MengFanjun的博客",
+      "url": "https://mfjblog.top/",
+      "avatar": "https://pic.imgdb.cn/item/63f9926ef144a01007de7d7d.png",
+      "screenshot": "https://pic.imgdb.cn/item/63f997adf144a01007e57dc6.png",
+      "description": "读书破万卷"
+    },
+    {
+      "title": "澄沨的漫游茶记",
+      "url": "https://champhoon.xyz/",
+      "avatar": "https://api.champhoon.xyz/favicon/favicon.ico",
+      "screenshot": "https://api.champhoon.xyz/img/blog/screenshots/screenshot.webp",
+      "description": "Stay hungry, Stay foolish."
+    },
+    {
+      "title": "DearXuan",
+      "url": "https://blog.dearxuan.com",
+      "avatar": "https://bu.dusays.com/2021/08/25/32f61f6ad6985.png",
+      "screenshot": "https://bu.dusays.com/2021/08/27/c0424b7eb583a.jpg",
+      "description": "编程与算法"
+    },
+    {
+      "title": "阿月浑子-Hexo博客",
+      "url": "https://pistachio0812.github.io",
+      "avatar": "https://gitee.com/jxustzzhlikewmm/img/blob/master/5c9d89ab1315c.jpg",
+      "screenshot": "https://gitee.com/jxustzzhlikewmm/img/blob/master/pistachio.png",
+      "description": "一分耕耘，一分收获"
+    },
+    {
+      "title": "fish的小站",
+      "url": "https://fishfishh.github.io/",
+      "avatar": "https://cdn.jsdelivr.net/gh/FishFishh/PicGoDemo/avatar/download20220300164601.png",
+      "screenshot": "https://cdn.jsdelivr.net/gh/FishFishh/PicGoDemo/img/fishfishh.png",
+      "description": "fishworld"
+    },
+    {
+      "title": "杜老师说",
+      "description": "师者，传道，授业，解惑！",
+      "screenshot": "https://bu.dusays.com/2020/11/13/0eccf1ca0dc4b.jpg",
+      "url": "https://dusays.com",
+      "avatar": "https://cdn.dusays.com/avatar.png",
+      "version": "版本：^5.0"
+    },
+    {
+      "title": "「七海の参考書」",
+      "url": "https://shiraha.cn",
+      "avatar": "https://fastly.jsdelivr.net/gh/45921/cdn-images@main/me/avatar.jpg",
+      "screenshot": "https://unpkg.com/mhgoos@0.0.1655519203430/20220618102556.png",
+      "description": "七海的混沌日常~",
+      "version": "版本：^4.3"
+    },
+    {
+      "title": "做了一些微小的工作",
+      "description": "微小的工作",
+      "screenshot": "https://unpkg.com/mhgoos@0.0.1655518198202/iyuhangli.github.io.png",
+      "url": "https://iyuhangli.github.io",
+      "avatar": "https://avatars.githubusercontent.com/u/48801131?v=4",
+      "version": "版本：^4.0"
+    },
+    {
+      "title": "DataScience",
+      "description": "放弃不难，但坚持一定很酷",
+      "screenshot": "https://unpkg.com/mhgoos@0.0.1655518006334/www.a2data.cn.png",
+      "url": "https://www.a2data.cn/",
+      "avatar": "https://avatars.githubusercontent.com/u/39373008?v=4",
+      "version": "版本：^4.0"
+    },
+    {
+      "title": "Kyoma's blog",
+      "url": "https://ding-kyoma.github.io",
+      "avatar": "https://s3.bmp.ovh/imgs/2022/05/29/517225c28d3d5524.jpg",
+      "screenshot": "https://s3.bmp.ovh/imgs/2022/05/29/9383c047873e6dcd.jpg",
+      "description": "暗黑主题更好看"
+    },
+    {
+      "title": "QinXS",
+      "description": "技术总结 各种折腾",
+      "screenshot": "https://cdn.jsdelivr.net/gh/qinxs/cdn-assets@master/img/screenshot.png",
+      "url": "https://7bxing.com",
+      "avatar": "https://i.loli.net/2020/08/13/SjKpdGOhWACMnVs.png",
+      "version": "版本：^4.0"
+    },
+    {
+      "title": "kelecn",
+      "description": "唯爱与科技不可辜负！",
+      "screenshot": "https://cdn.jsdelivr.net/gh/kelecn/images@master/myblog.png",
+      "url": "https://kelecn.top/",
+      "avatar": "https://cdn.jsdelivr.net/gh/kelecn/images@master/%E6%82%9F%E7%A9%BA.jpg",
+      "version": "版本：^4.0"
+    }
+  ]
+}
